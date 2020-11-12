@@ -9,6 +9,12 @@ The actual app is designed to help coffee drinkers get a good night’s sleep by
 * Roughly how many hours of sleep do they want?
 * How many cups of coffee do they drink per day?
 
+## Screenshot
+
+| Screenshot 01 |
+| ------------- |
+| ![ss01](.screenshots/ss01.png) |
+
 ---
 
 **MIT License**
