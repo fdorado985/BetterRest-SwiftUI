@@ -15,6 +15,13 @@ struct ContentView: View {
   @State private var alertMessage = ""
   @State private var showingAlert = false
 
+  var defaultWakeTime: Date {
+    var components = DateComponents()
+    components.hour = 7
+    components.minute = 0
+    return Calendar.current.date(from: components) ?? Date()
+  }
+
   var body: some View {
     NavigationView {
       VStack {
@@ -42,7 +49,6 @@ struct ContentView: View {
           }
         }
       }
-      .padding()
       .navigationBarTitle("BetterRest")
       .navigationBarItems(
         trailing: Button(action: calculateBedtime) {
