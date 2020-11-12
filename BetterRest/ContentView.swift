@@ -13,6 +13,7 @@ struct ContentView: View {
   var body: some View {
     Form {
       DatePicker("Please enter a date", selection: $wakeUp)
+        .labelsHidden()
     }
   }
 }
