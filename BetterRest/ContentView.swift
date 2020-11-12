@@ -11,9 +11,7 @@ struct ContentView: View {
   @State private var wakeUp = defaultWakeTime
   @State private var sleepAmount = 8.0
   @State private var coffeeAmount = 1
-  @State private var alertTitle = ""
-  @State private var alertMessage = ""
-  @State private var showingAlert = false
+  @State private var idealTimeToSleep  = ""
 
   static var defaultWakeTime: Date {
     var components = DateComponents()
@@ -39,7 +37,7 @@ struct ContentView: View {
 
         Section(header: Text("Daily coffee intake")) {
           Picker("Daily coffee intake", selection: $coffeeAmount) {
-            ForEach(1..<21) { (value) in
+            ForEach(1..<21) { value in
               if value == 1 {
                 Text("1 cup")
               } else {
@@ -49,15 +47,23 @@ struct ContentView: View {
           }
           .pickerStyle(WheelPickerStyle())
         }
+
+        Section(header: Text("Your ideal time")) {
+          Text(idealTimeToSleep)
+        }
       }
       .navigationBarTitle("BetterRest")
-      .navigationBarItems(
-        trailing: Button(action: calculateBedtime) {
-          Text("Calculate")
-        }
-      )
-      .alert(isPresented: $showingAlert) {
-        Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+      .onAppear {
+        calculateBedtime()
+      }
+      .onChange(of: wakeUp) { _ in
+        calculateBedtime()
+      }
+      .onChange(of: sleepAmount) { _ in
+        calculateBedtime()
+      }
+      .onChange(of: coffeeAmount) { _ in
+        calculateBedtime()
       }
     }
   }
@@ -80,14 +86,10 @@ struct ContentView: View {
       let formatter = DateFormatter()
       formatter.timeStyle = .short
 
-      alertMessage = formatter.string(from: sleepTime)
-      alertTitle = "Your ideal bedtime is..."
+      idealTimeToSleep = formatter.string(from: sleepTime)
     } catch {
-      alertTitle = "Error"
-      alertMessage = "Sorry, there was a problem calculating your bedtime."
+      idealTimeToSleep = "Sorry, there was a problem calculating your bedtime."
     }
-
-    showingAlert = true
   }
 }
 
