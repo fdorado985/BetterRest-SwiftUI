@@ -32,11 +32,13 @@ struct ContentView: View {
           .labelsHidden()
           .datePickerStyle(WheelDatePickerStyle())
 
-        Text("Desired amount of sleep")
-          .font(.headline)
+        VStack(alignment: .leading, spacing: 0.0) {
+          Text("Desired amount of sleep")
+            .font(.headline)
 
-        Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
-          Text("\(sleepAmount, specifier: "%g") hours")
+          Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
+            Text("\(sleepAmount, specifier: "%g") hours")
+          }
         }
 
         Text("Daily coffee intake")
