@@ -27,6 +27,17 @@ struct ContentView: View {
         Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
           Text("\(sleepAmount, specifier: "%g") hours")
         }
+
+        Text("Daily coffee intake")
+          .font(.headline)
+
+        Stepper(value: $coffeeAmount, in: 1...20) {
+          if coffeeAmount == 1 {
+            Text("1 cup")
+          } else {
+            Text("\(coffeeAmount) cups")
+          }
+        }
       }
     }
   }
