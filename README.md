@@ -3,7 +3,7 @@
 ![SwiftUI](https://img.shields.io/badge/Platform-SwiftUI-purple)
 ![Xcode 12](https://img.shields.io/badge/IDE-Xcode%2012-blue)
 
-The actual app s designed to help coffee drinkers get a good night’s sleep by asking them three questions:
+The actual app is designed to help coffee drinkers get a good night’s sleep by asking them three questions:
 
 * When do they want to wake up?
 * Roughly how many hours of sleep do they want?
