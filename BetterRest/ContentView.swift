@@ -49,7 +49,18 @@ struct ContentView: View {
   }
 
   func calculateBedtime() {
+    let model = SleepCalculator()
 
+    let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
+    let hour = (components.hour ?? 0) * 60 * 60
+    let minute = (components.minute ?? 0) * 60
+
+    do {
+      let prediction = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: Double(coffeeAmount))
+      let sleepTime = wakeUp - prediction.actualSleep
+    } catch {
+      // something went wrong!
+    }
   }
 }
 
