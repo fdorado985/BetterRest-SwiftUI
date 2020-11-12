@@ -16,7 +16,7 @@ struct ContentView: View {
       in: 4...12,
       step: 0.25
     ) {
-      Text("\(sleepAmount) hours")
+      Text("\(sleepAmount, specifier: "%g") hours")
     }
   }
 }
