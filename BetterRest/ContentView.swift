@@ -30,6 +30,7 @@ struct ContentView: View {
 
         DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
           .labelsHidden()
+          .datePickerStyle(WheelDatePickerStyle())
 
         Text("Desired amount of sleep")
           .font(.headline)
